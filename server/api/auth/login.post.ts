@@ -1,43 +1,48 @@
 import type { User } from '#auth-utils'
+import { transformUserData } from '~~/server/utils/auth/transformUserData'
 
 export default defineEventHandler(async (event) => {
-  interface LoginUser extends User {
-    password?: string
-  }
+  const { client, readItems } = event.context.directus
 
-  // TODO: Get user from directus here
-  const testUser: LoginUser = {
-    username: 'test2',
-    email: 'test2@example.com',
-    password: 'Test1234',
+  if (!client) {
+    return createError({
+      statusCode: 500,
+      statusMessage: 'error_directus_no_connection',
+    })
   }
 
   const body = await readBody(event)
   const { email, password } = body
 
-  if (testUser.email !== email) {
+  const users = await client.request(
+    readItems('users', {
+      fields: ['id', 'email', 'username', 'password'],
+      filter: { email: { _eq: email } },
+      limit: 1,
+    }),
+  )
+
+  if (!users || users.length === 0) {
     return createError({
       statusCode: 400,
-      statusMessage: 'User does not exist',
+      statusMessage: 'error_auth_no_user',
     })
   }
 
-  // TODO: Verify password here
-  /* const isPasswordValid = await verifyPassword(password, testUser.password);
+  const directusUser = users[0]
+  const isPasswordValid = await verifyPassword(directusUser.password, password)
 
   if (!isPasswordValid) {
     return createError({
-        statusCode: 400,
-        statusMessage: "Invalid password",
-    });
-  } */
+      statusCode: 400,
+      statusMessage: 'error_auth_invalid_login',
+    })
+  }
 
-  delete testUser.password
+  const userData = transformUserData(directusUser as User)
+
   await setUserSession(event, {
-    user: {
-      ...testUser,
-      testData: 'TEST DATA ON LOGIN',
-    },
+    user: userData,
   })
 
   return await getUserSession(event)

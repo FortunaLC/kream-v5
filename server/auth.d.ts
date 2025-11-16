@@ -1,8 +1,10 @@
 declare module '#auth-utils' {
   // the user as it is available on the client side
   interface User {
+    id: string
     name: string
     email: string
+    username: string
     createdAt: Date
   }
 
@@ -13,9 +15,9 @@ declare module '#auth-utils' {
 
   // the secure session data is only available on the server side
   // we didn't add any secure session data in this example
-  interface SecureSessionData {
-    // Add your own fields
-  }
+  /* interface SecureSessionData {
+
+  } */
 }
 
 export {}

@@ -7,8 +7,6 @@
 </template>
 
 <script setup lang="ts">
-console.log('TEST')
-
 const items = ref([
   [
     {
