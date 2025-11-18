@@ -1,0 +1,10 @@
+{
+  "common": {
+    "home": "Home",
+    "search": "Search",
+    "video": "Video | Videos",
+    "category": "Category | Categories",
+    "star": "Star | Stars",
+    "hotVideos": "Hot Videos"
+  }
+}

@@ -1,18 +1,39 @@
+<template>
+  <div class="w-full flex justify-center border-b border-default p-4">
+    <div class="container flex items-center gap-3">
+      <!-- LOGO -->
+      <div class="w-10 h-8 bg-emerald-500 rounded-lg" />
+      <div class="w-full flex flex-col gap-4 items-center">
+        <UInput icon="i-lucide-search" :placeholder="$t('common.search')" size="lg" class="w-90" />
+        <UNavigationMenu highlight highlight-color="primary" :items="navItems" class="w-full justify-center" />
+      </div>
+      <div class="flex items-center gap-3">
+        <WidgetAccountMenu />
+        <UColorModeButton class="p-2 rounded-full cursor-pointer" />
+        <WidgetLanguageSwitcher />
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const navItems = ref<NavigationMenuItem[][]>([
+const { t } = useI18n()
+
+const navItems = computed<NavigationMenuItem[][]>(() => [
   [
     {
-      label: 'Home',
+      label: t('common.home'),
       icon: 'ic:round-home',
       to: '/',
       active: true,
       defaultOpen: true,
     },
     {
-      label: 'Videos',
+      label: t('common.video', 2),
       icon: 'bxs:videos',
+      to: '/videos',
       children: [
         {
           label: 'Introduction',
@@ -38,13 +59,14 @@ const navItems = ref<NavigationMenuItem[][]>([
           label: 'Theme',
           icon: 'i-lucide-cog',
           description:
-                        'You can customize components by using the `class` / `ui` props or in your app.config.ts.',
+            'You can customize components by using the `class` / `ui` props or in your app.config.ts.',
         },
       ],
     },
     {
-      label: 'Categories',
+      label: t('common.category', 2),
       icon: 'iconamoon:category-fill',
+      to: '/categories',
       children: [
         {
           label: 'Introduction',
@@ -70,13 +92,14 @@ const navItems = ref<NavigationMenuItem[][]>([
           label: 'Theme',
           icon: 'i-lucide-cog',
           description:
-                        'You can customize components by using the `class` / `ui` props or in your app.config.ts.',
+            'You can customize components by using the `class` / `ui` props or in your app.config.ts.',
         },
       ],
     },
     {
-      label: 'Stars',
+      label: t('common.star', 2),
       icon: 'mdi:user',
+      to: '/stars',
       children: [
         {
           label: 'defineShortcuts',
@@ -101,29 +124,3 @@ const navItems = ref<NavigationMenuItem[][]>([
   ],
 ])
 </script>
-
-<template>
-  <div class="w-full flex justify-center border-b border-default p-4">
-    <div class="container flex items-center gap-3">
-      <!-- LOGO -->
-      <div class="w-10 h-8 bg-emerald-500 rounded-lg" />
-      <div class="w-full flex flex-col gap-4 items-center">
-        <UInput
-          icon="i-lucide-search"
-          placeholder="Search..."
-          size="lg"
-          class="w-90"
-        />
-        <UNavigationMenu
-          highlight
-          highlight-color="primary"
-          :items="navItems"
-          class="w-full justify-center"
-        />
-      </div>
-      <div class="flex items-center gap-3">
-        <WidgetAccountMenu />
-      </div>
-    </div>
-  </div>
-</template>
