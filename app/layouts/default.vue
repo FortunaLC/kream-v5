@@ -1,6 +1,7 @@
 <template>
   <div>
-    <LayoutNavbar />
+    <LayoutHeader class="max-md:hidden" />
+    <LayoutHeaderMobile class="md:hidden" />
     <slot />
     <LayoutFooter />
   </div>
