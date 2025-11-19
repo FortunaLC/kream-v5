@@ -1,24 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   modules: [
-    "@nuxt/eslint",
-    "@nuxt/image",
-    "@nuxt/scripts",
-    "@nuxt/test-utils",
-    "@nuxt/ui",
-    "@vueuse/nuxt",
-    "nuxt-auth-utils",
-    "@nuxtjs/i18n",
+    '@nuxt/eslint',
+    '@nuxt/image',
+    '@nuxt/scripts',
+    '@nuxt/test-utils',
+    '@nuxt/ui',
+    '@vueuse/nuxt',
+    'nuxt-auth-utils',
+    '@nuxtjs/i18n',
   ],
   devtools: { enabled: true },
-  css: ["./app/assets/css/main.css"],
+  css: ['./app/assets/css/main.css'],
   runtimeConfig: {
-    directusUrl: "",
-    directusToken: "",
+    directusUrl: '',
+    directusToken: '',
   },
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: '2025-07-15',
   vite: {
     plugins: [tailwindcss()],
   },
@@ -28,16 +28,16 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    strategy: "prefix_except_default",
-    defaultLocale: "en-US",
+    strategy: 'prefix_except_default',
+    defaultLocale: 'en-US',
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: "kream-lang",
-      fallbackLocale: "en-US",
+      cookieKey: 'kream-lang',
+      fallbackLocale: 'en-US',
     },
     locales: [
-      { code: "en-US", iso: "en-US", file: "en.json", name: "English" },
-      { code: "de-DE", iso: "de-DE", file: "de.json", name: "Deutsch" },
+      { code: 'en-US', iso: 'en-US', file: 'en.json', name: 'English' },
+      { code: 'de-DE', iso: 'de-DE', file: 'de.json', name: 'Deutsch' },
     ],
   },
-});
+})

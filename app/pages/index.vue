@@ -1,15 +1,23 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="container py-5 space-y-5">
-      <h1 class="text-2xl font-semibold">{{ $t('common.hotVideos') }}</h1>
-      <!--<div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-5">
+      <h1 class="text-2xl font-semibold">
+        {{ $t('common.hotVideos') }}
+      </h1>
+      <!-- <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-5">
         <div v-for="i in 40" :key="i">
-          <VideoPlayer :src="sampleVideoSrc" :qualities="sampleQualities" />
+          <VideoPlayerPlaceholder :src="sampleVideoSrc" :qualities="sampleQualities" />
         </div>
-      </div>-->
+      </div> -->
       <div class="w-full flex justify-center">
-        <UPagination v-model:page="page" :total="100" :items-per-page="40" :sibling-count="2" active-variant="subtle"
-          size="lg" />
+        <UPagination
+          v-model:page="page"
+          :total="100"
+          :items-per-page="40"
+          :sibling-count="2"
+          active-variant="subtle"
+          size="lg"
+        />
       </div>
     </div>
   </div>
