@@ -1,7 +1,14 @@
 <template>
   <div class="w-full grid grid-cols-8 gap-8 p-8">
     <div class="md:col-span-6 col-span-8 flex flex-col items-center">
-      <div class="aspect-video bg-primary-600 w-full" />
+      <p v-if="loading">
+        Loading... <button @click="fetchVideo">
+          Fetch again
+        </button>
+      </p>
+      <p v-else>
+        {{ video }}
+      </p>
     </div>
     <div class="md:col-span-2 col-span-8 flex justify-center">
       <div class="md:flex hidden flex-col items-center w-full gap-8">
@@ -57,4 +64,15 @@ const videoSources = [
     type: 'video/mp4',
   },
 ]
+
+const route = useRoute()
+const video = ref(null)
+const loading = ref(true)
+const fetchVideo = async () => {
+  const { data, pending } = await useFetch(`/api/videos/${route.params.id}`, {
+    method: 'GET',
+  })
+  video.value = data.value
+  loading.value = pending.value
+}
 </script>
