@@ -1,3 +1,5 @@
+import { videoFields } from '~~/server/schemas/queries/video'
+
 export default defineEventHandler(async (event) => {
   const { client, readItem } = event.context.directus
 
@@ -19,7 +21,7 @@ export default defineEventHandler(async (event) => {
 
   const video = await client.request(
     readItem('videos', id as string, {
-      fields: ['*'],
+      fields: videoFields,
       filter: { status: { _eq: 'published' } },
       limit: 1,
     }),
@@ -28,7 +30,7 @@ export default defineEventHandler(async (event) => {
   if (!video) {
     return createError({
       statusCode: 400,
-      statusMessage: 'error_video_not_found',
+      statusMessage: 'error_videos_not_found',
     })
   }
 

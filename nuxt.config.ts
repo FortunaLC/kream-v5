@@ -17,6 +17,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     directusUrl: '',
     directusToken: '',
+    public: {
+      assetsUrl: 'http://46.224.65.187:8055/assets',
+    },
   },
   compatibilityDate: '2025-07-15',
   vite: {
@@ -39,5 +42,8 @@ export default defineNuxtConfig({
       { code: 'en-US', iso: 'en-US', file: 'en.json', name: 'English' },
       { code: 'de-DE', iso: 'de-DE', file: 'de.json', name: 'Deutsch' },
     ],
+  },
+  image: {
+    provider: 'none',
   },
 })

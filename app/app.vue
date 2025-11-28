@@ -2,9 +2,11 @@
   <div>
     <NuxtRouteAnnouncer />
     <UApp>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <FetchData>
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </FetchData>
     </UApp>
   </div>
 </template>
