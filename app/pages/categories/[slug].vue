@@ -1,6 +1,9 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="container py-5">
+      <div class="w-full flex justify-end items-center">
+        <FilterMenu title="Filter" description="Filter the videos." button-label="Filter" />
+      </div>
       <div v-if="error?.message" class="w-full flex justify-center">
         <UAlert
           class="md:w-1/2"
