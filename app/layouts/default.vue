@@ -1,7 +1,6 @@
 <template>
   <div>
-    <LayoutHeader class="max-md:hidden" />
-    <LayoutHeaderMobile class="md:hidden" />
+    <LayoutHeader />
     <slot />
     <LayoutFooter />
   </div>

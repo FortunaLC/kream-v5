@@ -1,58 +1,59 @@
 <template>
-  <UDropdownMenu
-    :items="loggedIn ? itemsLoggedIn : itemsLoggedOut"
-    arrow
-    :content="{
-      align: 'center',
-      side: 'bottom',
-      sideOffset: 8,
-    }"
-    :ui="{
-      content: 'w-48',
-    }"
-  >
-    <UButton class="p-0 rounded-full" variant="link">
-      <UAvatar icon="mdi:user" size="lg" class="cursor-pointer" />
-    </UButton>
-    <template #notifications-trailing>
-      <UBadge label="2" size="sm" class="rounded-full" />
-    </template>
-  </UDropdownMenu>
+  <UiPopover>
+    <UiPopoverTrigger as-child>
+      <UiButton to="#" variant="ghost" size="sm">
+        <Icon class="size-5" name="lucide:user" />
+      </UiButton>
+    </UiPopoverTrigger>
+    <UiPopoverContent class="w-44 p-3">
+      <div class="space-y-3">
+        <div class="text-xs font-medium text-muted-foreground">
+          Account
+        </div>
+        <UiGradientDivider />
+        <UiButton
+          :to="$localePath('/')"
+          variant="ghost"
+          size="sm"
+          class="w-full justify-start"
+        >
+          <Icon class="size-5" name="lucide:user-pen" />
+          Profile
+        </UiButton>
+        <UiButton
+          :to="$localePath('/')"
+          variant="ghost"
+          size="sm"
+          class="w-full justify-start"
+        >
+          <Icon class="size-5" name="lucide:settings" />
+          Settings
+        </UiButton>
+        <UiButton
+          :to="$localePath('/')"
+          variant="ghost"
+          size="sm"
+          class="w-full justify-start"
+        >
+          <Icon class="size-5" name="lucide:heart" />
+          Favorites
+        </UiButton>
+        <UiButton
+          :to="$localePath('/')"
+          variant="ghost"
+          size="sm"
+          class="w-full justify-start"
+        >
+          <Icon class="size-5" name="lucide:user-check" />
+          Following
+        </UiButton>
+      </div>
+    </UiPopoverContent>
+  </UiPopover>
 </template>
 
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui'
 
-const { loggedIn } = useUserSession()
-
-const itemsLoggedIn = ref<DropdownMenuItem[]>([
-  {
-    label: 'Profile',
-    icon: 'i-lucide-user',
-  },
-  {
-    label: 'Notifications',
-    icon: 'i-lucide-bell',
-    slot: 'notifications' as const,
-  },
-  {
-    label: 'Settings',
-    icon: 'i-lucide-cog',
-  },
-])
-
-const itemsLoggedOut = ref<DropdownMenuItem[]>([
-  {
-    label: 'Login',
-    icon: 'i-lucide-log-in',
-    to: '/login',
-  },
-  {
-    label: 'Register',
-    icon: 'i-lucide-user-plus',
-    to: '/register',
-  },
-])
 </script>
 
 <style scoped></style>

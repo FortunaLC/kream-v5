@@ -1,4 +1,24 @@
 {
-  "i18n-ally.localesPaths": ["i18n", "i18n/locales"],
-  "editor.formatOnSave": false
+  "i18n-ally.localesPaths": [
+    "i18n",
+    "i18n/locales"
+  ],
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.classFunctions": [
+    "tw",
+    "clsx",
+    "tw\\.[a-z-]+"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "([\"'`][^\"'`]*.*?[\"'`])",
+      "[\"'`]([^\"'`]*)[\"'`]"
+    ]
+  ]
 }
