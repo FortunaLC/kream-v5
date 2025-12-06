@@ -6,5 +6,18 @@
     "category": "Kategorie | Kategorien",
     "star": "Star | Stars",
     "hotVideos": "Beliebte Videos"
+  },
+  "video": {
+    "settings": "Videoeinstellungen",
+    "settingInfo": "Konfiguriere die Videoinformationen vor dem Hochladen.",
+    "title": "Videotitel",
+    "visibility": {
+      "label": "Sichtbarkeit des Videos",
+      "public": "Öffentlich",
+      "publicInfo": "Jeder kann dieses Video sehen.",
+      "private": "Privat",
+      "privateInfo": "Nur du kannst dieses Video sehen."
+    },
+    "description": "Videobeschreibung"
   }
 }

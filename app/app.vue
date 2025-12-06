@@ -1,12 +1,10 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <UApp>
-      <FetchData>
-        <NuxtLayout>
-          <NuxtPage />
-        </NuxtLayout>
-      </FetchData>
-    </UApp>
+    <FetchData>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </FetchData>
   </div>
 </template>

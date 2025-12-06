@@ -6,5 +6,18 @@
     "category": "Category | Categories",
     "star": "Star | Stars",
     "hotVideos": "Hot Videos"
+  },
+  "video": {
+    "settings": "Video settings",
+    "settingInfo": "Configure the video information before uploading.",
+    "title": "Video title",
+    "visibility": {
+      "label": "Video visibility",
+      "public": "Public",
+      "publicInfo": "Anyone can see this video.",
+      "private": "Private",
+      "privateInfo": "Only you can see this video."
+    },
+    "description": "Video description"
   }
 }
