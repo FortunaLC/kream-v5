@@ -8,7 +8,7 @@
         {{ $t('video.settingInfo') }}
       </p>
     </div>
-    <div class="w-full grid grid-cols-2 gap-5">
+    <div class="w-full grid md:grid-cols-2 grid-cols-1 gap-5">
       <div class="space-y-5">
         <div>
           <UiLabel class="mb-2" for="video-title">

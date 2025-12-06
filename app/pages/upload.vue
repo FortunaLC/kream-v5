@@ -1,16 +1,16 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="container p-10 space-y-5">
+    <UiContainer>
       <div class="w-full">
         <VideoFileUploadButton v-model="file" />
       </div>
       <div v-if="1 === 1" class="w-full">
-        <UiGradientDivider />
+        <UiGradientDivider class="my-5" />
+        <div class="w-full">
+          <VideoFileForm />
+        </div>
       </div>
-      <div class="w-full">
-        <VideoFileForm />
-      </div>
-    </div>
+    </UiContainer>
   </div>
 </template>
 

@@ -42,6 +42,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.79",
     "@typescript-eslint/eslint-plugin": "^8.46.4",
     "@typescript-eslint/parser": "^8.46.4",
     "@vitejs/plugin-vue": "^6.0.1",

@@ -12,7 +12,7 @@
         </div>
         <UiGradientDivider />
         <UiButton
-          :to="$localePath('/')"
+          :to="$localePath('/profile/me')"
           variant="ghost"
           size="sm"
           class="w-full justify-start"
