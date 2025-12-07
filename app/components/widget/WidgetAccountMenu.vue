@@ -11,41 +11,26 @@
           Account
         </div>
         <UiGradientDivider />
-        <UiButton
-          :to="$localePath('/profile/me')"
-          variant="ghost"
-          size="sm"
-          class="w-full justify-start"
-        >
+        <UiButton :to="$localePath(`/profile/${user.username}`)" variant="ghost" size="sm" class="w-full justify-start">
           <Icon class="size-5" name="lucide:user-pen" />
           Profile
         </UiButton>
-        <UiButton
-          :to="$localePath('/')"
-          variant="ghost"
-          size="sm"
-          class="w-full justify-start"
-        >
+        <UiButton :to="$localePath('/')" variant="ghost" size="sm" class="w-full justify-start">
           <Icon class="size-5" name="lucide:settings" />
           Settings
         </UiButton>
-        <UiButton
-          :to="$localePath('/')"
-          variant="ghost"
-          size="sm"
-          class="w-full justify-start"
-        >
+        <UiButton :to="$localePath('/')" variant="ghost" size="sm" class="w-full justify-start">
           <Icon class="size-5" name="lucide:heart" />
           Favorites
         </UiButton>
-        <UiButton
-          :to="$localePath('/')"
-          variant="ghost"
-          size="sm"
-          class="w-full justify-start"
-        >
+        <UiButton :to="$localePath('/')" variant="ghost" size="sm" class="w-full justify-start">
           <Icon class="size-5" name="lucide:user-check" />
           Following
+        </UiButton>
+        <UiGradientDivider />
+        <UiButton @click="clear" variant="ghost" size="sm" class="w-full justify-start">
+          <Icon class="size-5" name="lucide:log-out" />
+          Log out
         </UiButton>
       </div>
     </UiPopoverContent>
@@ -53,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-
+const { user, clear } = useUserSession()
 </script>
 
 <style scoped></style>

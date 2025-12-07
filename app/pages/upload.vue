@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center">
-    <UiContainer>
+    <UiContainer class="py-5">
       <div class="w-full">
         <VideoFileUploadButton v-model="file" />
       </div>

@@ -18,6 +18,10 @@
       "private": "Private",
       "privateInfo": "Only you can see this video."
     },
-    "description": "Video description"
+    "description": "Video description",
+    "category": {
+      "label": "Video category",
+      "selectPlaceholder": "Select categories..."
+    }
   }
 }

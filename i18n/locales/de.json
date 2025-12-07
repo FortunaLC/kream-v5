@@ -18,6 +18,10 @@
       "private": "Privat",
       "privateInfo": "Nur du kannst dieses Video sehen."
     },
-    "description": "Videobeschreibung"
+    "description": "Videobeschreibung",
+    "category": {
+      "label": "Videokategorie",
+      "selectPlaceholder": "Kategorien auswählen..."
+    }
   }
 }

@@ -14,12 +14,7 @@
           <UiLabel class="mb-2" for="video-title">
             {{ $t('video.title') }}
           </UiLabel>
-          <UiInput
-            id="video-title"
-            v-model="form.title"
-            type="text"
-            :placeholder="`${$t('video.title')}...`"
-          />
+          <UiInput id="video-title" v-model="form.title" type="text" :placeholder="`${$t('video.title')}...`" />
         </div>
         <div>
           <UiLabel class="mb-2" for="video-visibility">
@@ -38,6 +33,21 @@
             {{ $t(`video.visibility.${form.visibility}Info`) }}
           </p>
         </div>
+        <div>
+          <!-- TODO: add a select / combobox for actors and actresses in video -->
+          <UiLabel class="mb-2" for="video-category">
+            {{ $t('video.category.label') }}
+          </UiLabel>
+          <UiSelect id="video-category" v-model="form.category" multiple>
+            <UiSelectTrigger :placeholder="$t('video.category.selectPlaceholder')" />
+            <UiSelectContent>
+              <UiSelectGroup>
+                <UiSelectItem v-for="category in categories" :key="category.id" :value="category.id"
+                  :text="getTranslation(category.translations, locale, 'title')" />
+              </UiSelectGroup>
+            </UiSelectContent>
+          </UiSelect>
+        </div>
       </div>
       <div>
         <UiLabel class="mb-2" for="video-description">
@@ -48,7 +58,6 @@
           <WidgetTipTapEditor id="video-description" v-model="form.description" />
         </ClientOnly>
       </div>
-      <!-- TODO: add select for category and maybe tags -->
     </div>
   </div>
 </template>
@@ -58,13 +67,19 @@ export interface VideoFileForm {
   title: string
   description: string
   visibility: 'public' | 'private'
+  category: Array<string>
 }
 
 const form = ref<VideoFileForm>({
   title: '',
   description: '',
   visibility: 'public',
+  category: [],
 })
+
+const { categories } = useContent()
+const { getTranslation } = useDirectus()
+const { locale } = useI18n()
 </script>
 
 <style scoped></style>

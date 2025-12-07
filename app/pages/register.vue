@@ -1,39 +1,58 @@
+<template>
+  <div class="w-full max-w-full relative">
+    <!-- TODO: Maybe remove the "snow" -->
+    <UiMeteors :number="30" class="-mt-10" />
+    <div class="relative flex items-center justify-center my-10 z-19">
+      <div class="relative w-full max-w-[330px] px-5">
+        <h1 class="text-2xl font-bold tracking-tight lg:text-3xl">Sign up</h1>
+        <p class="mt-1 text-muted-foreground">Create a new account</p>
+        <form class="mt-10" @submit="handleSubmit">
+          <fieldset :disabled="isSubmitting" class="grid gap-5">
+            <div>
+              <UiLabel class="mb-2" for="username">
+                Username
+              </UiLabel>
+              <UiInput required id="username" placeholder="John Doe" v-model="form.username" />
+            </div>
+            <div>
+              <UiLabel class="mb-2" for="email">
+                Email
+              </UiLabel>
+              <UiInput required type="email" id="email" placeholder="john@example.com" v-model="form.email" />
+            </div>
+            <div>
+              <UiLabel class="mb-2" for="password">
+                Password
+              </UiLabel>
+              <UiInput required label="Password" type="password" id="password" placeholder="Password"
+                v-model="form.password" />
+            </div>
+            <div>
+              <UiLabel class="mb-2" for="confirmPassword">
+                Confirm Password
+              </UiLabel>
+              <UiInput required label="Confirm Password" type="password" id="confirmPassword" placeholder="Password"
+                v-model="form.confirmPassword" />
+            </div>
+            <UiButton class="w-full" type="submit" text="Create account" />
+          </fieldset>
+        </form>
+        <p class="mt-8 text-sm text-muted-foreground">
+          Already have an account?
+          <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" :to="$localePath('/login')">
+            Log in</NuxtLink>
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
-import type { FormSubmitEvent, AuthFormField } from '@nuxt/ui'
 import { z } from 'zod'
 
-const toast = useToast()
 const { loggedIn, user, session, fetch, clear } = useUserSession()
 
-const fields: AuthFormField[] = [{
-  name: 'username',
-  type: 'text',
-  label: 'Username',
-  placeholder: 'Enter your username',
-  required: true,
-}, {
-  name: 'email',
-  type: 'email',
-  label: 'Email',
-  placeholder: 'Enter your email',
-  required: true,
-}, {
-  name: 'password',
-  label: 'Password',
-  type: 'password',
-  placeholder: 'Enter your password',
-  required: true,
-}, {
-  name: 'confirmPassword',
-  label: 'Confirm Password',
-  type: 'password',
-  placeholder: 'Confirm your password',
-  required: true,
-}, {
-  name: 'remember',
-  label: 'Remember me',
-  type: 'checkbox',
-}]
+const isSubmitting = ref(false)
 
 const schema = z.object({
   username: z.string('Username is required').min(4, 'Username must be at least 4 characters'),
@@ -44,57 +63,35 @@ const schema = z.object({
   message: 'Passwords do not match',
 })
 
-// TODO: Refine message is not being shown -> idk why lol
-
 type Schema = z.output<typeof schema>
 
-async function onSubmit(payload: FormSubmitEvent<Schema>) {
-  try {
-    const data = await $fetch('/api/auth/register', {
-      method: 'POST',
-      body: payload.data,
-    })
-    await fetch()
-  } catch (error) {
-    if (error && typeof error === 'object' && 'statusMessage' in error) {
-      toast.add({
-        color: 'error',
-        title: 'Registration failed',
-        description: error.statusMessage as string,
+const form = ref<Schema>({
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+})
+
+const handleSubmit = async (e: Event) => {
+  e.preventDefault()
+
+  const data = schema.safeParse(form.value)
+
+  if (data.success) {
+    isSubmitting.value = true
+    try {
+      const response = await $fetch('/api/auth/register', {
+        method: 'POST',
+        body: data.data,
       })
-    } else {
-      console.error('An unexpected error occurred:', error)
+
+      await fetch()
+    } catch (error) {
+      console.log(error)
+    } finally {
+      isSubmitting.value = false
     }
   }
 }
-</script>
 
-<template>
-  <div class="w-full flex justify-center">
-    <div class="container">
-      <div class="flex flex-col items-center justify-center gap-4 p-4">
-        <UPageCard class="w-full max-w-md">
-          <UAuthForm
-            :schema="schema"
-            title="Login"
-            description="Enter your credentials to access your account."
-            icon="i-lucide-user"
-            :fields="fields"
-            @submit="onSubmit"
-          />
-        </UPageCard>
-      </div>
-      <div>
-        <UButton @click="console.log(session)">
-          Log Session
-        </UButton>
-        <UButton color="error" @click="clear">
-          Log out
-        </UButton>
-        <p>{{ loggedIn }}</p>
-        <p>{{ user }}</p>
-        <p>{{ session }}</p>
-      </div>
-    </div>
-  </div>
-</template>
+</script>
