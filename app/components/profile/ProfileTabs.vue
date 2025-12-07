@@ -7,8 +7,8 @@
         >
           <UiTabsTrigger
             v-for="t in tabs"
-            :key="t.title"
-            :value="t.title.toLowerCase()"
+            :key="t.tabName"
+            :value="t.tabName"
             class="relative hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:hover:bg-accent"
           >
             <Icon :name="t.icon" class="-ms-0.5 me-1.5 size-4 shrink-0 opacity-60" />
@@ -28,6 +28,9 @@
       </UiTabsContent>
       <UiTabsContent value="favorites">
         <ProfileTabFavorites />
+      </UiTabsContent>
+      <UiTabsContent value="about">
+        <ProfileTabAbout />
       </UiTabsContent>
     </UiTabs>
   </div>
@@ -54,6 +57,11 @@ const tabs = [
     title: 'Favorites',
     tabName: 'favorites',
     icon: 'lucide:heart',
+  },
+  {
+    title: 'About',
+    tabName: 'about',
+    icon: 'lucide:user',
   },
 ]
 </script>

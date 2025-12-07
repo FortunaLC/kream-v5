@@ -4,7 +4,7 @@
       <div class="w-full">
         <VideoFileUploadButton v-model="file" />
       </div>
-      <div v-if="1 === 1" class="w-full">
+      <div v-if="file" class="w-full">
         <UiGradientDivider class="my-5" />
         <div class="w-full">
           <VideoFileForm />
@@ -17,5 +17,3 @@
 <script setup lang="ts">
 const file = ref<File | null>(null)
 </script>
-
-<style scoped></style>

@@ -4,16 +4,31 @@
     <UiMeteors :number="30" class="-mt-10" />
     <div class="flex items-center justify-center my-10 relative z-19">
       <div class="w-full max-w-[330px] px-5">
-        <h1 class="text-2xl font-bold tracking-tight lg:text-3xl">Log in</h1>
-        <p class="mt-1 text-muted-foreground">Enter your email & password to log in.</p>
+        <h1 class="text-2xl font-bold tracking-tight lg:text-3xl">
+          Log in
+        </h1>
+        <p class="mt-1 text-muted-foreground">
+          Enter your email & password to log in.
+        </p>
         <form class="mt-10" @submit="handleFormSubmit">
           <fieldset :disabled="isSubmitting" class="grid gap-5">
             <div>
-              <UiInput label="Email" type="email" name="email" placeholder="john@example.com" v-model="form.email" />
+              <UiInput
+                v-model="form.email"
+                label="Email"
+                type="email"
+                name="email"
+                placeholder="john@example.com"
+              />
             </div>
             <div>
-              <UiInput label="Password" type="password" name="password" placeholder="Password"
-                v-model="form.password" />
+              <UiInput
+                v-model="form.password"
+                label="Password"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
             </div>
             <div>
               <UiButton class="w-full" type="submit" text="Log in" />
@@ -21,12 +36,14 @@
           </fieldset>
         </form>
         <p class="mt-8 text-sm">
-          <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" to="#">Forgot password?
+          <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" to="#">
+            Forgot password?
           </NuxtLink>
         </p>
         <p class="mt-4 text-sm text-muted-foreground">
           Don't have an account?
-          <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" to="#">Create account
+          <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" to="#">
+            Create account
           </NuxtLink>
         </p>
       </div>
@@ -70,7 +87,7 @@ const handleFormSubmit = async (e: Event) => {
     try {
       const response = await $fetch('/api/auth/login', {
         method: 'POST',
-        body: data.data
+        body: data.data,
       })
 
       await fetch()

@@ -3,7 +3,13 @@
     <UiContainer class="flex h-16 items-center justify-between lg:h-20">
       <div class="flex items-center gap-10">
         <NuxtLink :to="$localePath('/')" class="flex items-center gap-3">
-          <img src="" fit="contain" alt="Company Logo" title="Company Logo" class="h-6 rounded object-contain lg:h-8">
+          <img
+            src=""
+            fit="contain"
+            alt="Company Logo"
+            title="Company Logo"
+            class="h-6 rounded object-contain lg:h-8"
+          >
           <span class="font-semibold lg:text-lg">UI Thing</span>
         </NuxtLink>
         <UiNavigationMenu as="nav" class="hidden items-center justify-start gap-8 lg:flex">
@@ -24,10 +30,13 @@
                       <ul class="grid w-full grid-cols-2 flex-col gap-2 xl:grid-cols-3">
                         <li v-for="(child, k) in item" :key="k">
                           <UiNavigationMenuLink class="data-[active]:bg-muted/80" as-child>
-                            <NuxtLink :to="child.href"
-                              class="flex flex-row gap-4 rounded-md p-3 transition hover:bg-muted/80 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none dark:hover:bg-muted/20">
+                            <NuxtLink
+                              :to="child.href"
+                              class="flex flex-row gap-4 rounded-md p-3 transition hover:bg-muted/80 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none dark:hover:bg-muted/20"
+                            >
                               <div
-                                class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border shadow-xs">
+                                class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border shadow-xs"
+                              >
                                 <Icon :name="child.icon" class="mt-px h-5 w-5 shrink-0 text-muted-foreground" />
                               </div>
                               <div class="flex flex-col gap-1.5 leading-none">
@@ -81,22 +90,29 @@
                     <template v-for="(data, link, i) in links" :key="i">
                       <UiCollapsible>
                         <UiCollapsibleTrigger as-child>
-                          <UiButton variant="ghost"
-                            class="w-full justify-start text-base capitalize *:data-[state=open]:-rotate-180" to="#">
+                          <UiButton
+                            variant="ghost"
+                            class="w-full justify-start text-base capitalize *:data-[state=open]:-rotate-180"
+                            to="#"
+                          >
                             {{
                               link }}
                             <Icon name="lucide:chevron-down" class="ml-auto size-4 transition" />
                           </UiButton>
                         </UiCollapsibleTrigger>
                         <UiCollapsibleContent
-                          class="data-[state=closed]:animate-none data-[state=open]:p-3 data-[state=open]:pt-0">
+                          class="data-[state=closed]:animate-none data-[state=open]:p-3 data-[state=open]:pt-0"
+                        >
                           <div v-for="(item, cat, index) in data" :key="`${cat}-${index}`" class="mt-5">
                             <ul class="flex w-full flex-col gap-2">
                               <li v-for="(child, k) in item" :key="k">
-                                <NuxtLink :to="child.href"
-                                  class="flex flex-row gap-4 rounded-md py-3 transition hover:bg-muted/80 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none">
+                                <NuxtLink
+                                  :to="child.href"
+                                  class="flex flex-row gap-4 rounded-md py-3 transition hover:bg-muted/80 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
+                                >
                                   <div
-                                    class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border shadow-xs">
+                                    class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border shadow-xs"
+                                  >
                                     <Icon :name="child.icon" class="mt-px h-5 w-5 shrink-0 text-muted-foreground" />
                                   </div>
                                   <div class="flex flex-col gap-1.5 leading-none">
@@ -151,7 +167,7 @@
           </UiButton>
         </template>
         <template v-else>
-          <UiButton @click="handleUploadClick" variant="ghost" size="sm">
+          <UiButton variant="ghost" size="sm" @click="handleUploadClick">
             <Icon class="size-5" name="lucide:upload" />
           </UiButton>
           <WidgetAccountMenu />

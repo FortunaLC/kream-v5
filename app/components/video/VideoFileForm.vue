@@ -14,7 +14,12 @@
           <UiLabel class="mb-2" for="video-title">
             {{ $t('video.title') }}
           </UiLabel>
-          <UiInput id="video-title" v-model="form.title" type="text" :placeholder="`${$t('video.title')}...`" />
+          <UiInput
+            id="video-title"
+            v-model="form.title"
+            type="text"
+            :placeholder="`${$t('video.title')}...`"
+          />
         </div>
         <div>
           <UiLabel class="mb-2" for="video-visibility">
@@ -42,8 +47,12 @@
             <UiSelectTrigger :placeholder="$t('video.category.selectPlaceholder')" />
             <UiSelectContent>
               <UiSelectGroup>
-                <UiSelectItem v-for="category in categories" :key="category.id" :value="category.id"
-                  :text="getTranslation(category.translations, locale, 'title')" />
+                <UiSelectItem
+                  v-for="category in categories"
+                  :key="category.id"
+                  :value="category.id"
+                  :text="getTranslation(category.translations, locale, 'title')"
+                />
               </UiSelectGroup>
             </UiSelectContent>
           </UiSelect>

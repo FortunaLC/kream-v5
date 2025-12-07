@@ -122,10 +122,6 @@
           </UiAlert>
         </Transition>
       </Motion>
-
-      <UiButton v-if="currentFile" @click="console.log(currentFile)">
-        Log File
-      </UiButton>
     </Motion>
   </div>
 </template>
