@@ -23,5 +23,17 @@
       "label": "Videokategorie",
       "selectPlaceholder": "Kategorien auswählen..."
     }
+  },
+  "profile": {
+    "settings": {
+      "showLikes": "Likes anzeigen",
+      "showFavorites": "Favoriten anzeigen",
+      "showPlaylists": "Playlisten anzeigen",
+      "email": "E-Mail",
+      "options": {
+        "yes": "Ja",
+        "no": "Nein"
+      }
+    }
   }
 }

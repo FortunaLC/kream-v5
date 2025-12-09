@@ -21,7 +21,7 @@
           Profile
         </UiButton>
         <UiButton
-          :to="$localePath('/')"
+          :to="$localePath(`/profile/${user.username}/settings`)"
           variant="ghost"
           size="sm"
           class="w-full justify-start"

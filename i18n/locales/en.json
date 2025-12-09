@@ -23,5 +23,17 @@
       "label": "Video category",
       "selectPlaceholder": "Select categories..."
     }
+  },
+  "profile": {
+    "settings": {
+      "showLikes": "Show likes",
+      "showFavorites": "Show favorites",
+      "showPlaylists": "Show playlists",
+      "email": "Email",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    }
   }
 }

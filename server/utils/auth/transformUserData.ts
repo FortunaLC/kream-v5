@@ -10,5 +10,11 @@ export function transformUserData(directusUser: User) {
     id: directusUser.id,
     email: directusUser.email,
     username: directusUser.username,
+    settings: {
+      show_favorites: directusUser.show_favorites,
+      show_likes: directusUser.show_likes,
+      show_playlists: directusUser.show_playlists,
+    },
+    videos: directusUser.videos,
   }
 }

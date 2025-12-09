@@ -1,4 +1,5 @@
 import type { User } from '#auth-utils'
+import { userFields } from '~~/server/schemas/queries/user'
 import { transformUserData } from '~~/server/utils/auth/transformUserData'
 
 export default defineEventHandler(async (event) => {
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
 
   const users = await client.request(
     readItems('users', {
-      fields: ['id', 'email', 'username', 'password'],
+      fields: userFields,
       filter: { email: { _eq: email } },
       limit: 1,
     }),

@@ -6,6 +6,9 @@ const profilePending = ref(true)
 
 export const useUserProfile = () => {
   const fetchProfile = async (username: string) => {
+    if (profile.value) {
+      return
+    }
     const { data, error, pending } = await useAsyncData(
       `user-profile-${username}`,
       () => $fetch(`/api/user/${username}`, { method: 'GET' }),

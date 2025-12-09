@@ -6,6 +6,10 @@ declare module '#auth-utils' {
     email: string
     username: string
     createdAt: Date
+    show_favorites: boolean
+    show_likes: boolean
+    show_playlists: boolean
+    videos: any[]
   }
 
   // the session includes the user and any other session data you want to store

@@ -1,3 +1,5 @@
+// all fields that should be shown on the profile page
+// public for everyone!
 export const profileFields = [
   'id',
   'show_favorites',
