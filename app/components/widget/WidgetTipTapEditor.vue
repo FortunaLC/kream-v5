@@ -87,7 +87,7 @@ const editor = useEditor({
   editorProps: {
     attributes: {
       class:
-                'min-h-[300px] focus:outline-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:my-3 prose-ul:my-3 prose-li:my-1',
+        'min-h-[300px] focus:outline-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:my-3 prose-ul:my-3 prose-li:my-1',
     },
   },
 })
@@ -99,35 +99,35 @@ onBeforeUnmount(() => {
 
 <style scoped>
 :deep(.ProseMirror) {
-    outline: none;
+  outline: none;
 }
 
 :deep(.ProseMirror pre) {
-    background: hsl(var(--muted));
-    border-radius: 0.5rem;
-    color: hsl(var(--foreground));
-    font-family: "JetBrainsMono", monospace;
-    padding: 0.75rem 1rem;
+  background: hsl(var(--muted));
+  border-radius: 0.5rem;
+  color: hsl(var(--foreground));
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
 }
 
 :deep(.ProseMirror code) {
-    background: hsl(var(--muted));
-    border-radius: 0.25rem;
-    color: hsl(var(--foreground));
-    font-size: 0.9rem;
-    padding: 0.25em 0.4em;
+  background: hsl(var(--muted));
+  border-radius: 0.25rem;
+  color: hsl(var(--foreground));
+  font-size: 0.9rem;
+  padding: 0.25em 0.4em;
 }
 
 :deep(.ProseMirror pre code) {
-    background: none;
-    color: inherit;
-    font-size: inherit;
-    padding: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
 }
 
 :deep(.ProseMirror blockquote) {
-    border-left: 3px solid hsl(var(--border));
-    padding-left: 1rem;
-    color: hsl(var(--muted-foreground));
+  border-left: 3px solid hsl(var(--border));
+  padding-left: 1rem;
+  color: hsl(var(--muted-foreground));
 }
 </style>

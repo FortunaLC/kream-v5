@@ -11,7 +11,7 @@
         description="Sorry, something went wrong on our part. Try again later."
         icon="lucide:alert-circle"
       />
-      <ProfileSettingsForm v-else :settings="data" />
+      <ProfileSettingsTabs v-else :settings="data" />
     </div>
   </div>
 </template>
