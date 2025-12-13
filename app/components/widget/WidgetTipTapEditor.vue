@@ -81,9 +81,11 @@
 import StarterKit from '@tiptap/starter-kit'
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 
+const model = defineModel<string>()
+
 const editor = useEditor({
   extensions: [StarterKit],
-  content: ``,
+  content: model.value,
   editorProps: {
     attributes: {
       class:

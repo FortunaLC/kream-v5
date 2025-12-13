@@ -10,6 +10,11 @@ declare module '#auth-utils' {
     show_likes: boolean
     show_playlists: boolean
     videos: any[]
+    bio?: string
+    subtitle?: string
+    twitter?: string
+    instagram?: string
+    website?: string
   }
 
   // the session includes the user and any other session data you want to store

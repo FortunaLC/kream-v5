@@ -1,40 +1,41 @@
 import type { NuxtError } from '#app'
+import type { User } from '#auth-utils'
 
-const profile = ref(null)
-const profileError: Ref<NuxtError | null> = ref(null)
-const profilePending = ref(true)
+const profileData = ref<User | null>(null)
+const profileUpdatePending = ref<boolean>(false)
+const profileUpdateError = ref<NuxtError | null>(null)
 
 export const useUserProfile = () => {
-  const fetchProfile = async (username: string) => {
-    if (profile.value) {
-      return
-    }
+  const updateProfile = async (
+    userId: string,
+    updateData: Record<string, any>,
+  ) => {
     const { data, error, pending } = await useAsyncData(
-      `user-profile-${username}`,
-      () => $fetch(`/api/user/${username}`, { method: 'GET' }),
+      `update-profile-${userId}`,
+      () =>
+        $fetch('/api/user/settings', {
+          method: 'POST',
+          body: {
+            userId: userId,
+            update: updateData,
+          },
+        }),
     )
 
-    profilePending.value = pending.value
+    profileUpdatePending.value = pending.value
 
     if (error.value) {
-      profileError.value = error.value
+      profileUpdateError.value = error.value
       return
     }
 
-    profile.value = data.value || null
+    profileData.value = data.value || null
   }
 
   return {
-    fetchProfile,
-    profile,
-    profileError,
-    profilePending,
-    showLikes: computed(() => profile.value?.show_likes),
-    likes: computed(() => profile.value?.likes || []),
-    showFavorites: computed(() => profile.value?.show_favorites),
-    favorites: computed(() => profile.value?.favorites || []),
-    showPlaylists: computed(() => profile.value?.show_playlists),
-    playlists: computed(() => profile.value?.playlists || []),
-    videos: computed(() => profile.value?.videos || []),
+    profile: profileData,
+    profileUpdatePending,
+    profileUpdateError,
+    updateProfile,
   }
 }

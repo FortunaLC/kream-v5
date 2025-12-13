@@ -31,9 +31,13 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  settings: any
-}>()
+const { updateProfile, profileUpdateError, profileUpdatePending } = useUserProfile()
+const { user } = useUserSession()
+
+// Sample usage of profile update function
+/* await updateProfile(user.value?.id, {
+  subtitle: 'New subtitle'
+}) */
 
 const tabs = [
   {

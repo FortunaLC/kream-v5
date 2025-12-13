@@ -9,6 +9,7 @@ import {
   readItem,
   readItems,
   createItem,
+  updateItem,
   rest,
   staticToken,
   realtime,
@@ -29,6 +30,7 @@ declare module 'h3' {
       readItem: typeof readItem
       readItems: typeof readItems
       createItem: typeof createItem
+      updateItem: typeof updateItem
     }
   }
 }
@@ -63,6 +65,7 @@ export default defineNitroPlugin(async (nitroApp) => {
       readItem,
       readItems,
       createItem,
+      updateItem,
     }
   })
 

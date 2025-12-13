@@ -54,8 +54,6 @@ const props = defineProps<{
   settings: any
 }>()
 
-console.log(props.settings)
-
 const settingsRef = ref(props.settings)
 </script>
 

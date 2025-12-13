@@ -23,6 +23,20 @@
       <UiGradientDivider class="md:col-span-3 col-span-1" />
 
       <div>
+        <UiLabel class="mb-2 text-lg" for="settings-subtitle">
+          Subtitle
+        </UiLabel>
+        <p class="text-sm text-muted-foreground">
+          This will be displayed on your profile page.
+        </p>
+      </div>
+      <div class="md:col-span-2 col-span-1">
+        <UiInput id="settings-subtitle" v-model="subtitle" placeholder="Hey, I'm new here!" />
+      </div>
+
+      <UiGradientDivider class="md:col-span-3 col-span-1" />
+
+      <div>
         <UiLabel class="mb-2 text-lg" for="settings-bio">
           Bio
         </UiLabel>
@@ -31,7 +45,7 @@
         </p>
       </div>
       <div class="md:col-span-2 col-span-1">
-        <WidgetTipTapEditor id="settings-bio" />
+        <WidgetTipTapEditor id="settings-bio" v-model="bio" />
       </div>
 
       <UiGradientDivider class="md:col-span-3 col-span-1" />
@@ -59,19 +73,19 @@
       <div class="md:col-span-2 col-span-1">
         <div class="space-y-5 w-full">
           <UiInputGroup>
-            <UiInputGroupInput placeholder="https://x.com/..." />
+            <UiInputGroupInput v-model="twitter" placeholder="https://x.com/..." />
             <UiInputGroupAddon>
               <Icon name="lucide:twitter" />
             </UiInputGroupAddon>
           </UiInputGroup>
           <UiInputGroup>
-            <UiInputGroupInput placeholder="https://instagram.com/..." />
+            <UiInputGroupInput v-model="instagram" placeholder="https://instagram.com/..." />
             <UiInputGroupAddon>
               <Icon name="lucide:instagram" />
             </UiInputGroupAddon>
           </UiInputGroup>
           <UiInputGroup>
-            <UiInputGroupInput placeholder="https://www..." />
+            <UiInputGroupInput v-model="website" placeholder="https://www..." />
             <UiInputGroupAddon>
               <Icon name="lucide:globe" />
             </UiInputGroupAddon>
@@ -90,4 +104,12 @@
  * - Social Links
  * - Maybe later info like PH (tattoos, piercings, etc...)
  */
+
+const { user } = useUserSession()
+
+const bio = ref<string>(user.value?.bio || '')
+const subtitle = ref<string>(user.value?.subtitle || '')
+const twitter = ref<string>(user.value?.socials.twitter || '')
+const instagram = ref<string>(user.value?.socials.instagram || '')
+const website = ref<string>(user.value?.socials.website || '')
 </script>

@@ -10,10 +10,17 @@ export function transformUserData(directusUser: User) {
     id: directusUser.id,
     email: directusUser.email,
     username: directusUser.username,
+    bio: directusUser.bio,
+    subtitle: directusUser.subtitle,
     settings: {
       show_favorites: directusUser.show_favorites,
       show_likes: directusUser.show_likes,
       show_playlists: directusUser.show_playlists,
+    },
+    socials: {
+      twitter: directusUser.twitter,
+      instagram: directusUser.instagram,
+      website: directusUser.website,
     },
     videos: directusUser.videos,
   }

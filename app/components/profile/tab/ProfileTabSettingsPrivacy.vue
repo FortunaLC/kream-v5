@@ -10,7 +10,7 @@
         </p>
       </div>
       <div class="md:col-span-2 col-span-1 flex items-center">
-        <UiSwitch id="settings-show-likes" />
+        <UiSwitch id="settings-show-likes" v-model="showLikes" />
       </div>
 
       <UiGradientDivider class="md:col-span-3 col-span-1" />
@@ -24,7 +24,7 @@
         </p>
       </div>
       <div class="md:col-span-2 col-span-1 flex items-center">
-        <UiSwitch id="settings-show-favorites" />
+        <UiSwitch id="settings-show-favorites" v-model="showFavorites" />
       </div>
 
       <UiGradientDivider class="md:col-span-3 col-span-1" />
@@ -38,7 +38,7 @@
         </p>
       </div>
       <div class="md:col-span-2 col-span-1 flex items-center">
-        <UiSwitch id="settings-show-playlists" />
+        <UiSwitch id="settings-show-playlists" v-model="showPlaylists" />
       </div>
     </div>
   </ProfileTabGeneric>
@@ -50,4 +50,10 @@
  * Show favorites
  * Show playlists
  */
+
+const { user } = useUserSession()
+
+const showLikes = ref<boolean>(user.value?.settings?.showLikes)
+const showFavorites = ref<boolean>(user.value?.settings?.showFavorites)
+const showPlaylists = ref<boolean>(user.value?.settings?.showPlaylists)
 </script>
