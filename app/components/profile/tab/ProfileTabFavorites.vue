@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-const { favorites, showFavorites } = useUserProfile()
-const isEmpty = computed(() => favorites.value.length === 0)
-const isPrivate = computed(() => !showFavorites.value)
+const { userProfile } = useUserProfile()
+// const isEmpty = computed(() => userProfile.value.favorites.length === 0)
+const isEmpty = true
+const isPrivate = computed(() => userProfile.value.show_favorites)
 </script>

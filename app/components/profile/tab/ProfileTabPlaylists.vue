@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-const { playlists, showPlaylists } = useUserProfile()
-const isEmpty = computed(() => playlists.value.length === 0)
-const isPrivate = computed(() => !showPlaylists.value)
+const { userProfile } = useUserProfile()
+// const isEmpty = computed(() => userProfile.value.playlists.length === 0)
+const isEmpty = false
+const isPrivate = computed(() => userProfile.value.show_playlists)
 </script>

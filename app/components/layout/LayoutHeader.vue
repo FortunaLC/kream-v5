@@ -201,7 +201,7 @@ const miniLinks = [
   { name: 'Cookie settings', href: '#' },
 ]
 const links = {
-  products: {
+  categories: {
     items: [
       {
         name: 'Blog',

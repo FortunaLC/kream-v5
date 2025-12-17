@@ -8,6 +8,6 @@
 </template>
 
 <script setup lang="ts">
-const { videos } = useUserProfile()
-const isEmpty = computed(() => videos.value.length === 0)
+const { userProfile } = useUserProfile()
+const isEmpty = computed(() => userProfile.value.videos.length === 0)
 </script>

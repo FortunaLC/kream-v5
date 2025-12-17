@@ -5,23 +5,26 @@
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div class="flex items-start gap-4">
             <slot name="icon">
-              <div
-                v-if="props.icon"
-                class="flex size-16 items-center justify-center rounded-xl border shadow-sm"
-              >
+              <div v-if="props.icon" class="flex size-16 items-center justify-center rounded-xl border shadow-sm">
                 <Icon :name="props.icon" class="size-8 text-primary" />
               </div>
             </slot>
             <div class="flex flex-col gap-0.5">
               <slot name="title">
-                <h1 v-if="props.title" class="text-lg font-bold" v-html="props.title" />
+                <h1 v-if="props.title" class="text-lg font-bold">
+                  {{ props.title }}
+                </h1>
+                <h1 v-else class="text-lg font-bold">
+                  Username
+                </h1>
               </slot>
               <slot name="description">
-                <p
-                  v-if="props.description"
-                  class="text-[15px] text-muted-foreground"
-                  v-html="props.description"
-                />
+                <p v-if="props.description" class="text-[15px] text-muted-foreground">
+                  {{ props.description }}
+                </p>
+                <p v-else class="text-[15px] text-muted-foreground">
+                  {{ $t('profile.noSubtitle') }}
+                </p>
               </slot>
             </div>
           </div>
@@ -52,7 +55,7 @@ const props = withDefaults(
   }>(),
   {
     title: 'Username',
-    description: 'Custom user message',
+    description: '',
     icon: 'lucide:store',
     tabs: () => ['Videos', 'Playlists', 'Likes', 'Favorites'],
     socials: () => [{

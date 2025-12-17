@@ -1,41 +1,66 @@
 import type { NuxtError } from '#app'
-import type { User } from '#auth-utils'
 
-const profileData = ref<User | null>(null)
-const profileUpdatePending = ref<boolean>(false)
+const profileUpdated = ref<any>(null)
+const profileUpdatePending = ref<boolean>(true)
 const profileUpdateError = ref<NuxtError | null>(null)
+
+const userProfile = ref<any>(null)
+const userProfilePending = ref<boolean>(true)
+const userProfileError = ref<NuxtError | null>(null)
 
 export const useUserProfile = () => {
   const updateProfile = async (
     userId: string,
     updateData: Record<string, any>,
   ) => {
-    const { data, error, pending } = await useAsyncData(
-      `update-profile-${userId}`,
-      () =>
-        $fetch('/api/user/settings', {
-          method: 'POST',
-          body: {
-            userId: userId,
-            update: updateData,
-          },
-        }),
-    )
+    try {
+      const { data, error, pending } = await useAsyncData(
+        `update-profile-${userId}`,
+        () =>
+          $fetch('/api/user/settings', {
+            method: 'POST',
+            body: {
+              userId: userId,
+              update: updateData,
+            },
+          }),
+      )
 
-    profileUpdatePending.value = pending.value
-
-    if (error.value) {
-      profileUpdateError.value = error.value
-      return
+      profileUpdatePending.value = pending.value
+      profileUpdated.value = data.value
+    } catch (err) {
+      console.error('Error updating user profile:', err)
+      profileUpdateError.value = err as NuxtError
     }
+  }
 
-    profileData.value = data.value || null
+  const getProfile = async (username: string) => {
+    try {
+      const { data, error, pending } = await useAsyncData(
+        `user-profile-${username}`,
+        () =>
+          $fetch(`/api/user/${username}`, {
+            method: 'GET',
+          }),
+      )
+
+      userProfilePending.value = pending.value
+
+      userProfile.value = data.value
+    } catch (err) {
+      console.error('Error fetching user profile:', err)
+      userProfileError.value = err as NuxtError
+    }
   }
 
   return {
-    profile: profileData,
+    updateProfile,
+    getProfile,
+    userProfile,
+    userProfilePending,
+    userProfileError,
+    profileUpdated,
     profileUpdatePending,
     profileUpdateError,
-    updateProfile,
   }
 }

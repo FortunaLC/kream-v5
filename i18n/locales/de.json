@@ -25,6 +25,7 @@
     }
   },
   "profile": {
+    "noSubtitle": "Hier gibt's nichts zu sehen.",
     "settings": {
       "showLikes": "Likes anzeigen",
       "showFavorites": "Favoriten anzeigen",

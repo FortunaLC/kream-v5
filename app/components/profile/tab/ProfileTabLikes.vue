@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-const { likes, showLikes } = useUserProfile()
-const isEmpty = computed(() => likes.value.length === 0)
-const isPrivate = computed(() => !showLikes.value)
+const { userProfile } = useUserProfile()
+// const isEmpty = computed(() => userProfile.value.likes.length === 0)
+const isEmpty = true
+const isPrivate = computed(() => userProfile.value.show_likes)
 </script>

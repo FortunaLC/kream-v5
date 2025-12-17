@@ -1,10 +1,10 @@
 <template>
   <div>
-    <ProfileHeader />
+    <ProfileHeader :title="userProfile.username" :description="userProfile.subtitle" />
     <div class="w-full flex justify-center">
-      <UiLoader v-if="profilePending" class="my-10 size-10" icon="svg-spinners:pulse-2" />
+      <UiLoader v-if="userProfilePending" class="my-10 size-10" icon="svg-spinners:pulse-2" />
       <UiAlert
-        v-else-if="profileError"
+        v-else-if="userProfileError"
         class="my-10 max-sm:mx-10 sm:w-3/5"
         variant="destructive"
         title="Error"
@@ -18,9 +18,7 @@
 
 <script setup lang="ts">
 const route = useRoute()
-const { fetchProfile, profileError, profilePending } = useUserProfile()
+const { getProfile, userProfile, userProfilePending, userProfileError } = useUserProfile()
 
-await fetchProfile(route.params.username as string)
+await getProfile(route.params.username as string)
 </script>
-
-<style scoped></style>
